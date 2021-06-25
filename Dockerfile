@@ -26,4 +26,4 @@ RUN chmod 755 /sbin/entrypoint.sh && \
 
 
 EXPOSE 6379/tcp
-ENTRYPOINT ["/sbin/entrypoint.sh"]
+CMD ["/sbin/entrypoint.sh"]
