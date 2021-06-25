@@ -19,11 +19,11 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /sbin/entrypoint.sh
-RUN chmod 755 /sbin/entrypoint.sh && \
-    usermod -g 0 -u 1001 redis && \  
-    chgrp -R 0   ${REDIS_DATA_DIR}  ${REDIS_LOG_DIR}  && \
-    chmod -R g=u ${REDIS_DATA_DIR}  ${REDIS_LOG_DIR} 
 
+RUN usermod -g 0 -u 1001 redis && \
+    chgrp -R 0   ${REDIS_DATA_DIR}  ${REDIS_LOG_DIR}  && \
+    chmod -R g=u ${REDIS_DATA_DIR}  ${REDIS_LOG_DIR}  && \ 
+    chmod 755 /sbin/entrypoint.sh  
 
 EXPOSE 6379/tcp
 CMD ["/sbin/entrypoint.sh"]
